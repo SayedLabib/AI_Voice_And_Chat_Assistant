@@ -1,0 +1,339 @@
+/* Root variables for colors and fonts */
+:root {
+    --primary-color: #1e90ff; /* Ocean blue */
+    --secondary-color: #00bfff; /* Lighter ocean blue */
+    --background-color: #0d1117; /* Dark background */
+    --text-color: #c9d1d9; /* Light gray text */
+    --gray-color: #8b949e; /* Gray for secondary text */
+    --border-color: #30363d; /* Border color */
+    --assistant-bg: #161b22; /* Assistant message background */
+    --user-bg: #21262d; /* User message background */
+    --hover-color: #58a6ff; /* Hover effect color */
+    --typing-indicator-color: #1e90ff; /* Typing indicator color */
+    --font-family: 'Roboto', sans-serif;
+}
+
+/* Reset and global styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: var(--font-family);
+}
+
+body {
+    background-color: var(--background-color);
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden;
+}
+
+.container {
+    max-width: 900px;
+    margin: 2rem auto;
+    padding: 1rem;
+    border-radius: 12px;
+    background: linear-gradient(145deg, #0d1117, #161b22);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+/* Header styles */
+header {
+    text-align: center;
+    margin-bottom: 2rem;
+    animation: fadeIn 1s ease-in-out;
+}
+
+header h1 {
+    color: var(--primary-color);
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+header p {
+    color: var(--gray-color);
+    font-size: 1.2rem;
+}
+
+/* Chat container */
+.chat-container {
+    background-color: var(--assistant-bg);
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    animation: slideIn 1s ease-in-out;
+}
+
+.chat-messages {
+    padding: 1.5rem;
+    height: 450px;
+    overflow-y: auto;
+    scrollbar-width: thin;
+    scrollbar-color: var(--primary-color) var(--background-color);
+}
+
+.chat-messages::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-messages::-webkit-scrollbar-thumb {
+    background-color: var(--primary-color);
+    border-radius: 4px;
+}
+
+.message {
+    display: flex;
+    margin-bottom: 1.5rem;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.message .avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 12px;
+    flex-shrink: 0;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.message.assistant .avatar {
+    background-color: var(--primary-color);
+}
+
+.message.user .avatar {
+    background-color: var(--secondary-color);
+}
+
+.message-content {
+    padding: 12px 16px;
+    border-radius: 18px;
+    max-width: 80%;
+    background-color: var(--assistant-bg);
+    color: var(--text-color);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.message.user .message-content {
+    background-color: var(--user-bg);
+    border-top-right-radius: 4px;
+}
+
+.message.assistant .message-content {
+    border-top-left-radius: 4px;
+}
+
+/* Chat input styles */
+.chat-input-container {
+    border-top: 1px solid var(--border-color);
+    padding: 1rem;
+    background-color: var(--background-color);
+}
+
+#chat-form {
+    display: flex;
+    position: relative;
+}
+
+#user-input {
+    flex: 1;
+    padding: 12px 16px;
+    border: 1px solid var(--border-color);
+    border-radius: 24px;
+    font-size: 16px;
+    background-color: var(--assistant-bg);
+    color: var(--text-color);
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+#user-input:focus {
+    border-color: var(--primary-color);
+}
+
+.send-btn, .voice-btn {
+    position: absolute;
+    width: 42px;
+    height: 42px;
+    border: none;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background-color 0.2s;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.send-btn {
+    right: 50px;
+    background-color: var(--primary-color);
+    color: var(--text-color);
+}
+
+.voice-btn {
+    right: 0;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
+}
+
+.send-btn:hover, .voice-btn:hover {
+    background-color: var(--hover-color);
+}
+
+.voice-btn.recording {
+    background-color: #f44336;
+    color: white;
+}
+
+.voice-status {
+    text-align: center;
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--text-color);
+    background-color: rgba(30, 144, 255, 0.1);
+    padding: 5px 10px;
+    border-radius: 12px;
+    transition: all 0.3s ease;
+}
+
+.voice-status.active {
+    background-color: rgba(30, 144, 255, 0.3);
+    box-shadow: 0 0 10px rgba(30, 144, 255, 0.5);
+}
+
+.voice-status.error {
+    background-color: rgba(244, 67, 54, 0.2);
+    color: #ff7675;
+}
+
+/* Typing indicator */
+.typing-indicator {
+    display: flex;
+    padding: 8px 12px;
+    background-color: var(--assistant-bg);
+    border-radius: 16px;
+    width: fit-content;
+    animation: fadeIn 0.5s ease-in-out;
+}
+
+.typing-indicator span {
+    width: 8px;
+    height: 8px;
+    background-color: var(--typing-indicator-color);
+    border-radius: 50%;
+    display: inline-block;
+    margin: 0 2px;
+    animation: bounce 1.5s infinite ease-in-out;
+}
+
+.typing-indicator span:nth-child(2) {
+    animation-delay: 0.1s;
+}
+
+.typing-indicator span:nth-child(3) {
+    animation-delay: 0.2s;
+}
+
+/* Status indicator styles */
+.status-indicator {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 12px;
+    color: var(--gray-color);
+    display: flex;
+    align-items: center;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    margin-right: 6px;
+    display: inline-block;
+}
+
+.status-dot.online {
+    background-color: #4CAF50; /* green */
+}
+
+.status-dot.limited {
+    background-color: #FFC107; /* amber */
+}
+
+.status-dot.mock {
+    background-color: #2196F3; /* blue */
+}
+
+.status-dot.offline {
+    background-color: #F44336; /* red */
+}
+
+/* Voice controls */
+.voice-controls {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 10px;
+    font-size: 14px;
+    color: var(--gray-color);
+}
+
+.voice-mode-toggle, .voice-output-toggle {
+    display: flex;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.voice-mode-toggle input, .voice-output-toggle input {
+    margin-right: 5px;
+}
+
+/* Animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateX(-100%);
+    }
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+}
+
+@keyframes bounce {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.6);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 77, 77, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 77, 77, 0);
+    }
+}

@@ -1,0 +1,28 @@
+# FastAPI and server dependencies
+fastapi>=0.95.0
+uvicorn>=0.22.0
+pydantic>=2.0.0
+python-multipart>=0.0.6
+
+# Text-to-Speech
+gtts>=2.3.2
+requests>=2.28.0
+
+# Speech-to-Text (Whisper)
+faster-whisper>=0.6.0
+numpy>=1.24.0
+torch>=2.0.0
+torchaudio>=2.0.0
+ffmpeg-python>=0.2.0
+
+# LLM dependencies 
+langchain>=0.0.267
+langchain-community>=0.0.1  # Add this line
+transformers>=4.31.0
+bitsandbytes>=0.41.0  # For 8-bit quantization
+accelerate>=0.21.0
+sentencepiece>=0.1.99
+
+# Utility dependencies
+python-dotenv>=1.0.0
+langchain-openrouter

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Customer Support</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/css/styles.css">
+</head>
+<body>
+    <div class="container">
+        <div class="status-indicator">
+            <span class="status-dot offline"></span> Connecting...
+        </div>
+        <header>
+            <h1>AI Customer Support</h1>
+            <p>Ask me anything about our products and services</p>
+        </header>
+        <div class="chat-container">
+            <div id="chat-messages" class="chat-messages">
+                <div class="message assistant">
+                    <div class="avatar">
+                        <i class="fas fa-robot"></i>
+                    </div>
+                    <div class="message-content">
+                        <p>Hello! I'm your AI customer support assistant. How may I help you today?</p>
+                    </div>
+                </div>
+            </div>
+            <div class="chat-input-container">
+                <form id="chat-form">
+                    <input type="text" id="user-input" placeholder="Type your message here..." autocomplete="off">
+                    <button type="submit" class="send-btn">
+                        <i class="fas fa-paper-plane"></i>
+                    </button>
+                    <button type="button" id="voice-btn" class="voice-btn">
+                        <i class="fas fa-microphone"></i>
+                    </button>
+                </form>
+                <div id="voice-status" class="voice-status">Click the microphone to speak</div>
+            </div>
+        </div>
+    </div>
+
+    <script src="/static/js/chat.js"></script>
+    <script src="/static/js/voice.js"></script>
+</body>
+</html>
