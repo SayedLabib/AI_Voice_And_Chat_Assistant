@@ -72,7 +72,3 @@ You can access the API documentation at `http://127.0.0.1:8000/docs`.
 ## Contributing
 
 Contributions are welcome! Please open an issue or submit a pull request for any improvements or features.
-
-## License
-
-This project is licensed under the MIT License. See the LICENSE file for details.
