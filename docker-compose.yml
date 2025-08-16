@@ -1,0 +1,33 @@
+version: '3.8'
+
+services:
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: ai-voice-assistant
+    ports:
+      - "8061:8061"
+    volumes:
+      - ./app:/app/app
+      - ./logs:/app/logs
+      - ./uploads:/app/uploads
+      - ./output:/app/output
+      - ./temp:/app/temp
+    environment:
+      - SPEECH_TO_TEXT_SERVICE_URL=${SPEECH_TO_TEXT_SERVICE_URL}
+      - TEXT_TO_SPEECH_SERVICE_URL=${TEXT_TO_SPEECH_SERVICE_URL}
+      - DEBUG=${DEBUG:-True}
+      - USE_GROQ_API=${USE_GROQ_API:-True}
+      - GROQ_API_KEY=${GROQ_API_KEY}
+      - GROQ_MODEL=${GROQ_MODEL:-meta-llama/llama-4-scout-17b-16e-instruct}
+      - USE_OPENROUTER_API=${USE_OPENROUTER_API:-False}
+      - USE_MOCK_RESPONSES=${USE_MOCK_RESPONSES:-False}
+      - USE_ALTERNATIVE_MODELS=${USE_ALTERNATIVE_MODELS:-False}
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8061/"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 15s
